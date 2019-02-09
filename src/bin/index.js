@@ -1,12 +1,14 @@
 #!/usr/bin/env node
 import program from 'commander';
-import GetInfo from '..';
+import GetGeoInformation from '..';
 
 program
-  .arguments('<firstConfig>')
-  .description('Введите ваш api')
+  .arguments('<ip>')
+  .description('Compares two configuration files and shows a difference.')
   .version('0.0.3')
-  .option('-f', '')
-  .action(api => (
-    new GetInfo(api).getInfo()))
+  .option('-f', 'Output format')
+  .action((ip) => {
+    const getIp = new GetGeoInformation();
+    return getIp.getInfo(ip);
+  })
   .parse(process.argv);

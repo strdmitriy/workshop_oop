@@ -3,13 +3,17 @@ import Output from './output';
 import Error from './error';
 
 export default class getGeoInformation {
-  constructor(request) {
-    this.request = request || '';
+  constructor() {
+    this.request = 'https://ipapi.co/';
   }
 
-  getInfo() {
-    axios.get(`http://ip-api.com/json/${this.request}`)
-      .then(response => new Output(response).infoOutput())
-      .catch(error => new Error(error).infoError());
+  async getInfo(ip) {
+    console.log(ip);
+    try {
+      const response = await axios.get(`${this.request}${ip}/json`);
+      Output(response.data);
+    } catch (error) {
+      Error(`An error has occurred: ${error}`);
+    }
   }
 }
