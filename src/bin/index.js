@@ -1,5 +1,12 @@
 #!/usr/bin/env node
+import program from 'commander';
+import GetInfo from '..';
 
-import half from '..';
-
-console.log(half(Number(process.argv[process.argv.length - 1])));
+program
+  .arguments('<firstConfig>')
+  .description('Введите ваш api')
+  .version('0.0.3')
+  .option('-f', '')
+  .action(api => (
+    new GetInfo(api).getInfo()))
+  .parse(process.argv);

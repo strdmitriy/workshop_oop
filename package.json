@@ -31,6 +31,8 @@
   },
   "homepage": "https://github.com/strdmitriy/workshop_oop#readme",
   "dependencies": {
+    "axios": "^0.18.0",
+    "commander": "^2.19.0",
     "gulp": "^4.0.0",
     "source-map-support": "^0.5.10"
   },
