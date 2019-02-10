@@ -3,12 +3,16 @@ import program from 'commander';
 import GetGeoInformation from '..';
 
 program
-  .arguments('<ip>')
-  .description('Compares two configuration files and shows a difference.')
+  .arguments('ip')
+  .description('Определение города по ip')
   .version('0.0.3')
-  .option('-f', 'Output format')
   .action((ip) => {
     const getIp = new GetGeoInformation();
-    return getIp.getInfo(ip);
+    try {
+      const getInfo = getIp.getInfo(ip);
+      return getInfo;
+    } catch (e) {
+      return console.log(e.message);
+    }
   })
   .parse(process.argv);
